@@ -1,7 +1,56 @@
 import Vue from 'vue'
-import { Button, Form, FormItem, Input } from 'element-ui'
+import { Button, Form, FormItem, Input, Message, Container, Header, Main, Tabs, 
+	TabPane, DatePicker, Col, TimePicker, Switch, Checkbox, CheckboxGroup, Radio,
+	RadioGroup, Row, PageHeader, Dropdown, DropdownMenu, DropdownItem, Carousel,
+	CarouselItem, Card, Link, RadioButton,  Image, Divider, Aside, Footer,
+	Menu, Submenu, MenuItemGroup, MenuItem, Breadcrumb, BreadcrumbItem, 
+	Table, TableColumn, Pagination, Transfer, Calendar, Rate, InputNumber,
+    Avatar, Dialog, } from 'element-ui'
 
 Vue.use(Button)
 Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Input)
+Vue.use(Container)
+Vue.use(Header)
+Vue.use(Main)
+Vue.use(Tabs)
+Vue.use(TabPane)
+Vue.use(DatePicker)
+Vue.use(Col)
+Vue.use(TimePicker)
+Vue.use(Switch)
+Vue.use(Checkbox)
+Vue.use(CheckboxGroup)
+Vue.use(RadioGroup)
+Vue.use(Radio)
+Vue.use(Row)
+Vue.use(PageHeader)
+Vue.use(Dropdown)
+Vue.use(DropdownMenu)
+Vue.use(DropdownItem)
+Vue.use(CarouselItem)
+Vue.use(Carousel)
+Vue.use(Card)
+Vue.use(Link)
+Vue.use(RadioButton)
+Vue.use(Image)
+Vue.use(Divider)
+Vue.use(Aside)
+Vue.use(Menu)
+Vue.use(Submenu)
+Vue.use(MenuItemGroup)
+Vue.use(Footer)
+Vue.use(MenuItem)
+Vue.use(Breadcrumb)
+Vue.use(BreadcrumbItem)
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(Pagination)
+Vue.use(Transfer)
+Vue.use(Calendar)
+Vue.use(Rate)
+Vue.use(InputNumber)
+Vue.use(Avatar)
+Vue.use(Dialog)
+Vue.prototype.$message = Message

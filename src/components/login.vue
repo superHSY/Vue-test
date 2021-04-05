@@ -1,8 +1,12 @@
 <template>
 	<div class="login_tab">
+		<el-header class="zsd">
+				  <el-page-header @back="goBack" content="首页">
+				  </el-page-header>
+		</el-header>
 		<div class="login_box">
 			<div class="avatar">
-				<img src="../assets/logo.png">
+				<img src="../assets/6.png">
 			</div>
 			<!-- 登录表单区域 -->
 			<el-form ref="loginFormRef" :rules="loginFormrules" label-width="0" class="login_form" :model="loginForm" >
@@ -17,7 +21,7 @@
 
 				<el-form-item class="right">
     			<el-button type="primary" @click="login">登录</el-button>
-				<el-button type="info">注册</el-button>
+				<el-button type="info" @click="reguser">注册</el-button>
   				</el-form-item>
 			</el-form>
 		</div>
@@ -49,27 +53,43 @@ export default {
 	methods:{
 		//登录函数
 		login() {
-			var params = new FormData();
- 			params.append('username',this.loginForm.username);
- 			params.append('password',this.loginForm.password );
-			
+			const searchParams = new URLSearchParams();
+ 			searchParams.append('username',this.loginForm.username);
+ 			searchParams.append('password',this.loginForm.password );
 			this.$refs.loginFormRef.validate(async valid => {
 				if( !valid ) return;
-				const {data} = await this.$http.post('/api/login', 'username=admin&password=000',{
+				const {data: res} = await this.$http.post('/api/login', searchParams.toString() ,{
 					 headers: {
         			'Content-Type': 'application/x-www-form-urlencoded'
   							   },
 				})
-				console.log(data)
+				if( res.status !== 0) return this.$message.error('登录失败！')
+				this.$message.success('登录成功')
+				console.log(res)
+				window.sessionStorage.setItem("token", res.token)
+				//跳转页面
+				this.$router.push('/home')
 			})
-		}
+		},
+		//注册函数
+		reguser() {
+			this.$router.push('/reguser')
+		},
+		goBack() {
+			this.$router.push('/')
+		},
+		
 	}
 }
 </script>
 
 <style lang="less" scoped>
+.zsd {
+	padding-top: 10px;
+}
 .login_tab {
-	background-color: #2b4b6b;
+	background:url("../assets/20.png");
+	background-size:100% 100% ;
 	height: 100%;
 }
 
@@ -80,7 +100,7 @@ export default {
 	border-radius: 3px;
 	position: absolute;
 	left: 50%;
-	top: 50%;
+	top:45%;
 	transform: translate(-50%, -50%);
 
 	.avatar {

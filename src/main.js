@@ -11,6 +11,11 @@ import axios from 'axios'
 //请求根路径
 axios.defaults.baseURL= 'http://127.0.0.1:3007'
 //axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+axios.interceptors.request.use(config => {
+  console.log(config)
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
+})
 Vue.prototype.$http = axios
 
 Vue.config.productionTip = false
